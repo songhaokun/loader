@@ -98,7 +98,7 @@
                 </div>
             </div>
             <div class="self-dian layer-button-image" data-index="0" style="text-indent: 0px">
-                <img src="img/dianaa.png" onClick="Show_Hidden(xqa1),donghua1();_czc.push(['_trackEvent', '中间热点', 'Aa']);"/>
+                <img src="img/dianaa.png" onClick="_czc.push(['_trackEvent', '中间热点', 'Aa']);"/>
             </div>
             <div class="self-box">
                 <div class="self-right self-right-0" style="text-indent: 0px">
@@ -116,7 +116,7 @@
                 </div>
             </div>
             <div class="self-dian layer-button-image" data-index="1" style="text-indent: 0px">
-                <img src="img/dianaa.png" onClick="Show_Hidden(xqa2),donghua2();_czc.push(['_trackEvent', '中间热点', 'Bb']);"/>
+                <img src="img/dianaa.png" onClick="_czc.push(['_trackEvent', '中间热点', 'Bb']);"/>
             </div>
             <div class="self-box">
                 <div class="self-right self-right-1" style="text-indent: 0px">
@@ -134,7 +134,7 @@
                 </div>
             </div>
             <div class="self-dian layer-button-image" data-index="2" style="text-indent: 0px">
-                <img src="img/dianaa.png" onClick="Show_Hidden(xqa3),donghua3();_czc.push(['_trackEvent', '中间热点', 'Cc']);"/>
+                <img src="img/dianaa.png" onClick="_czc.push(['_trackEvent', '中间热点', 'Cc']);"/>
             </div>
             <div class="self-box">
                 <div class="self-right self-right-2" style="text-indent: 0px">
@@ -155,7 +155,7 @@
                 </div>
             </div>
             <div class="self-dian layer-button-image" data-index="3" style="text-indent: 0px">
-                <img src="img/dianaa.png" onClick="Show_Hidden(xqa4),donghua4();_czc.push(['_trackEvent', '中间热点', 'Bb']);"/>
+                <img src="img/dianaa.png" onClick="_czc.push(['_trackEvent', '中间热点', 'Bb']);"/>
             </div>
             <div class="self-box">
                 <div class="self-right self-right-3" style="text-indent: 0px">
@@ -173,7 +173,7 @@
                 </div>
             </div>
             <div class="self-dian layer-button-image" data-index="4" style="text-indent: 0px">
-                <img src="img/dianaa.png" onClick="Show_Hidden(xqa5),donghua5();_czc.push(['_trackEvent', '中间热点', 'Bb']);"/>
+                <img src="img/dianaa.png" onClick="_czc.push(['_trackEvent', '中间热点', 'Bb']);"/>
             </div>
             <div class="self-box">
                 <div class="self-right self-right-4" style="text-indent: 0px">
@@ -191,7 +191,7 @@
                 </div>
             </div>
             <div class="self-dian layer-button-image" data-index="5" style="text-indent: 0px">
-                <img src="img/dianaa.png" onClick="Show_Hidden(xqa6),donghua6();_czc.push(['_trackEvent', '中间热点', 'Cc']);"/>
+                <img src="img/dianaa.png" onClick="_czc.push(['_trackEvent', '中间热点', 'Cc']);"/>
             </div>
             <div class="self-box">
                 <div class="self-right self-right-5" style="text-indent: 0px">
@@ -293,21 +293,21 @@
     <!-- </div> -->
 	
 	
-  <!-- 右侧按钮 -->
+  <!-- 下侧按钮 -->
     <div class="layer-right " >
-        <div class="layer-button" onClick="_czc.push(['_trackEvent', '右侧', '功能1']);"></div>
+        <div class="layer-button" onClick="qiea();_czc.push(['_trackEvent', '右侧', '功能1']);"></div>
 
     </div>
 	    <div class="layer-righta " >
-        <div class="layer-button" onClick="_czc.push(['_trackEvent', '右侧', '功能1']);"></div>
+        <div class="layer-button" onClick="qieb();_czc.push(['_trackEvent', '右侧', '功能1']);"></div>
 
     </div>
 	    <div class="layer-rightb " >
-        <div class="layer-button" onClick="_czc.push(['_trackEvent', '右侧', '功能1']);"></div>
+        <div class="layer-button" onClick="qiemain();_czc.push(['_trackEvent', '右侧', '功能1']);"></div>
 
     </div>
 	    <div class="layer-rightc " >
-        <div class="layer-button" onClick="_czc.push(['_trackEvent', '右侧', '功能1']);"></div>
+        <div class="layer-button" onClick="qiec();_czc.push(['_trackEvent', '右侧', '功能1']);"></div>
 
     </div>
 
@@ -607,7 +607,7 @@
     var targetArray = [{ name: 'reset', position: new THREE.Vector3(0, 0, 0) }];
     var cameraPositionArray = [{ position: new THREE.Vector3(-11, 7, 11) }, { position: new THREE.Vector3(-9, 7, 11) }, { position: new THREE.Vector3(-9, 7, 11) }, { position: new THREE.Vector3(5, -1, 5) }, { position: new THREE.Vector3(-4, 0, 4) }];
     var movingState = false;
-    var objectQi;
+    var Qa,Qb,Qc;
     var timer = Date.now() * 3;
 
 
@@ -776,56 +776,33 @@
       }
     }
     function donghua1() {
+	  controls.minPolarAngle = Math.PI / 2;
+      controls.maxPolarAngle = Math.PI / 2;       // 控制酒瓶的旋转角度
+	  controls.maxAzimuthAngle = 2.5;		//水平角度最右限制
+	  controls.minAzimuthAngle = 0.5 ;       //水平角度最左限制
+      controls.minDistance = 25;
+      controls.maxDistance = 25;
       //动画1
-      if (currentAction) {
-        mixer.stopAllAction();
-      }
+      <!-- if (currentAction) { -->
+        <!-- mixer.stopAllAction(); -->
+      <!-- } -->
 
-      if (showanimation[1]) {
+      <!-- if (showanimation[1]) { -->
 
-        currentAction = mixer.clipAction(showanimation[1]);
-        currentAction.loop = THREE.LoopOnce;
-        currentAction.time = 0;
-        currentAction.clampWhenFinished = true;
-        currentAction.enable = true;
-        currentAction.fadeIn();
-        currentAction.play(); //解体
+        <!-- currentAction = mixer.clipAction(showanimation[1]); -->
+        <!-- currentAction.loop = THREE.LoopOnce; -->
+        <!-- currentAction.time = 0; -->
+        <!-- currentAction.clampWhenFinished = true; -->
+        <!-- currentAction.enable = true; -->
+        <!-- currentAction.fadeIn(); -->
+        <!-- currentAction.play(); //解体 -->
 
-      }
+      <!-- } -->
 
       //objectQi.visible = true;
 
       console.log(shoeModel);
-      <!-- for (var i = 0; i < shoeModel.children.length; i++) { -->
-        <!-- if (shoeModel.children[i].name == 'dd') { -->
-          <!-- shoeModel.children[i].children[0].material.opacity = 1; -->
-          <!-- shoeModel.children[i].children[0].material.transparent = true; -->
-          <!-- shoeModel.children[i].children[1].material.opacity = 1; -->
-          <!-- shoeModel.children[i].children[1].material.transparent = true; -->
-          <!-- shoeModel.children[i].children[2].material.opacity = 1; -->
-          <!-- shoeModel.children[i].children[2].material.transparent = true; -->
-          <!-- shoeModel.children[i].children[3].material.opacity = 1; -->
-          <!-- shoeModel.children[i].children[3].material.transparent = true; -->
-        <!-- } -->
-      <!-- } -->
-      <!-- for (var i = 0; i < shoeModel.children.length; i++) { -->
-        <!-- if (shoeModel.children[i].name == 'aa') { -->
-          <!-- shoeModel.children[i].children[0].material.opacity = 1; -->
-          <!-- shoeModel.children[i].children[0].material.transparent = true; -->
-          <!-- shoeModel.children[i].children[1].material.opacity = 1; -->
-          <!-- shoeModel.children[i].children[1].material.transparent = true; -->
-          <!-- shoeModel.children[i].children[2].material.opacity = 1; -->
-          <!-- shoeModel.children[i].children[2].material.transparent = true; -->
-          <!-- shoeModel.children[i].children[3].material.opacity = 1; -->
-          <!-- shoeModel.children[i].children[3].material.transparent = true; -->
-          <!-- shoeModel.children[i].children[4].material.opacity = 1; -->
-          <!-- shoeModel.children[i].children[4].material.transparent = true; -->
-          <!-- shoeModel.children[i].children[5].material.opacity = 1; -->
-          <!-- shoeModel.children[i].children[5].material.transparent = true; -->
-          <!-- shoeModel.children[i].children[7].material.opacity = 1; -->
-          <!-- shoeModel.children[i].children[7].material.transparent = true; -->
-        <!-- } -->
-      <!-- } -->
+
 
       cube4.visible = false;
       cube5.visible = false;
@@ -839,69 +816,46 @@
       document.getElementsByClassName('a1')[0].style.display = 'none';
       document.getElementsByClassName('a2')[0].style.display = 'none';
       document.getElementsByClassName('a3')[0].style.display = 'none';
+	  
+	  
+	  
+	  document.getElementsByClassName('layer-right')[0].style.display = 'block';
+	  document.getElementsByClassName('layer-righta')[0].style.display = 'block';
+      document.getElementsByClassName('layer-rightb')[0].style.display = 'block';
+      document.getElementsByClassName('layer-rightc')[0].style.display = 'block';
     }
 
 
 
     function donghua2() {
-      //动画2
-      if (currentAction) {
-        mixer.stopAllAction();
-      }
-      if (showanimation[0]) {
-        currentAction = mixer.clipAction(showanimation[0]);
-        currentAction.loop = THREE.LoopOnce;
-        currentAction.time = 0;
-        currentAction.clampWhenFinished = true;
-        currentAction.enable = true;
-        currentAction.fadeIn();
-        currentAction.play(); //合体
-      }
-
-
-      //objectQi.visible = false;
-      <!-- for (var i = 0; i < shoeModel.children.length; i++) { -->
-        <!-- if (shoeModel.children[i].name == 'dd') { -->
-          <!-- shoeModel.children[i].children[0].material.opacity = 0.1; -->
-          <!-- shoeModel.children[i].children[0].material.transparent = true; -->
-          <!-- shoeModel.children[i].children[1].material.opacity = 0.1; -->
-          <!-- shoeModel.children[i].children[1].material.transparent = true; -->
-          <!-- shoeModel.children[i].children[2].material.opacity = 0.1; -->
-          <!-- shoeModel.children[i].children[2].material.transparent = true; -->
-          <!-- shoeModel.children[i].children[3].material.opacity = 0.1; -->
-          <!-- shoeModel.children[i].children[3].material.transparent = true; -->
-        <!-- } -->
+	  controls.minPolarAngle = Math.PI / 2 - 1.2;
+      controls.maxPolarAngle = Math.PI / 2 + 1;       // 控制酒瓶的旋转角度
+	  controls.maxAzimuthAngle = 4;		//水平角度最右限制
+	  controls.minAzimuthAngle = -4 ;       //水平角度最左限制
+      controls.minDistance = 8;
+      controls.maxDistance = 55;
+	  <!-- Qa.visible = false; -->
+	  <!-- Qb.visible = false; -->
+	  <!-- Qc.visible = false; -->
+	  <!-- shoeModel.visible = true; -->
+	  
+	        <!-- if (currentAction) { -->
+        <!-- mixer.stopAllAction(); -->
       <!-- } -->
-      <!-- for (var i = 0; i < shoeModel.children.length; i++) { -->
-        <!-- if (shoeModel.children[i].name == 'aa') { -->
-          <!-- shoeModel.children[i].children[0].material.opacity = 0.1; -->
-          <!-- shoeModel.children[i].children[0].material.transparent = true; -->
-          <!-- shoeModel.children[i].children[1].material.opacity = 0.1; -->
-          <!-- shoeModel.children[i].children[1].material.transparent = true; -->
-          <!-- shoeModel.children[i].children[2].material.opacity = 0.1; -->
-          <!-- shoeModel.children[i].children[2].material.transparent = true; -->
-          <!-- shoeModel.children[i].children[3].material.opacity = 0.1; -->
-          <!-- shoeModel.children[i].children[3].material.transparent = true; -->
-          <!-- shoeModel.children[i].children[4].material.opacity = 0.1; -->
-          <!-- shoeModel.children[i].children[4].material.transparent = true; -->
-          <!-- shoeModel.children[i].children[5].material.opacity = 0.1; -->
-          <!-- shoeModel.children[i].children[5].material.transparent = true; -->
-          <!-- shoeModel.children[i].children[7].material.opacity = 0.1; -->
-          <!-- shoeModel.children[i].children[7].material.transparent = true; -->
-        <!-- } -->
+      <!-- if (showanimation[1]) { -->
+        <!-- currentAction = mixer.clipAction(showanimation[1]); -->
+        <!-- currentAction.loop = THREE.LoopOnce; -->
+        <!-- currentAction.time = 0; -->
+        <!-- currentAction.clampWhenFinished = true; -->
+        <!-- currentAction.enable = true; -->
+        <!-- currentAction.fadeIn(); -->
+        <!-- currentAction.play(); //合体 -->
       <!-- } -->
 
-			// 	< !-- for (var i = 0; i < shoeModel.children.length; i++) {
-      //   -->
-      //           < !-- if (shoeModel.children[i].name == 'ff') {
-      //     -->
-      //               < !--shoeModel.children[i].material.map.offset.y += timer; -->
-			// 		< !-- //shoeModel.children[i].material.opacity = 1; -->
-      //               < !-- //shoeModel.children[i].material.transparent = true; -->
-			// 	< !-- } -->
-			// < !-- } -->
 
-        cube4.visible = true;
+
+
+      cube4.visible = true;
       cube5.visible = true;
       cube6.visible = true;
       cube.visible = false;
@@ -920,6 +874,11 @@
       document.getElementsByClassName('a1')[0].style.display = 'none';
       document.getElementsByClassName('a2')[0].style.display = 'none';
       document.getElementsByClassName('a3')[0].style.display = 'none';
+	  
+	  document.getElementsByClassName('layer-right')[0].style.display = 'none';
+	  document.getElementsByClassName('layer-righta')[0].style.display = 'none';
+      document.getElementsByClassName('layer-rightb')[0].style.display = 'none';
+      document.getElementsByClassName('layer-rightc')[0].style.display = 'none';
     }
 
 
@@ -929,8 +888,8 @@
       if (currentAction) {
         mixer.stopAllAction();
       }
-      if (showanimation[1]) {
-        currentAction = mixer.clipAction(showanimation[1]);
+      if (showanimation[0]) {
+        currentAction = mixer.clipAction(showanimation[0]);
         currentAction.loop = THREE.LoopOnce;
         currentAction.time = 0;
         currentAction.clampWhenFinished = true;
@@ -966,8 +925,8 @@
       if (currentAction) {
         mixer.stopAllAction();
       }
-      if (showanimation[0]) {
-        currentAction = mixer.clipAction(showanimation[0]);
+      if (showanimation[1]) {
+        currentAction = mixer.clipAction(showanimation[1]);
         currentAction.loop = THREE.LoopOnce;
         currentAction.time = 0;
         currentAction.clampWhenFinished = true;
@@ -986,19 +945,19 @@
 
     function donghua5() {
       //动画5
-      if (currentAction) {
-        mixer.stopAllAction();
+      <!-- if (currentAction) { -->
+        <!-- mixer.stopAllAction(); -->
 
 
-      }
-      if (showanimation[1]) {
-        currentAction = mixer.clipAction(showanimation[1]);
-        currentAction.loop = THREE.LoopOnce;
+      <!-- } -->
+      <!-- if (showanimation[1]) { -->
+        <!-- currentAction = mixer.clipAction(showanimation[1]); -->
+        <!-- currentAction.loop = THREE.LoopOnce; -->
 
-        currentAction.clampWhenFinished = true;
+        <!-- currentAction.clampWhenFinished = true; -->
 
-        currentAction.play(); //合体
-      }
+        <!-- currentAction.play(); //合体 -->
+      <!-- } -->
 
 
     }
@@ -1007,18 +966,18 @@
 
     function donghua6() {
       //动画6
-      if (currentAction) {
-        mixer.stopAllAction();
-      }
-      if (showanimation[1]) {
-        currentAction = mixer.clipAction(showanimation[1]);
-        currentAction.loop = THREE.LoopOnce;
+      <!-- if (currentAction) { -->
+        <!-- mixer.stopAllAction(); -->
+      <!-- } -->
+      <!-- if (showanimation[1]) { -->
+        <!-- currentAction = mixer.clipAction(showanimation[1]); -->
+        <!-- currentAction.loop = THREE.LoopOnce; -->
 
-        currentAction.clampWhenFinished = true;
+        <!-- currentAction.clampWhenFinished = true; -->
 
-        currentAction.fadeIn();
-        currentAction.play(); //合体
-      }
+        <!-- currentAction.fadeIn(); -->
+        <!-- currentAction.play(); //合体 -->
+      <!-- } -->
 
 
         cube4.visible = false;
@@ -1035,9 +994,30 @@
       document.getElementsByClassName('a3')[0].style.display = 'none';
     }
 
-
-
-
+    function qiea() {
+	  Qa.visible = true;
+	  Qb.visible = false;
+	  Qc.visible = false;
+	  shoeModel.visible = false;
+    }
+    function qieb() {
+	  Qa.visible = false;
+	  Qb.visible = true;
+	  Qc.visible = false;
+	  shoeModel.visible = false;
+    }
+    function qiec() {
+	  Qa.visible = false;
+	  Qb.visible = false;
+	  Qc.visible = true;
+	  shoeModel.visible = false;
+    }
+    function qiemain() {
+	  Qa.visible = false;
+	  Qb.visible = false;
+	  Qc.visible = false;
+	  shoeModel.visible = true;
+    }
 
 
 
@@ -1046,15 +1026,15 @@
 
 
       camera = new THREE.PerspectiveCamera(30, window.innerWidth / window.innerHeight, 0.25, 200);
-      camera.position.set(-11, 7, 11);
+      camera.position.set(25, 7, -10);
 
       scene = new THREE.Scene();
 
       scene.add(group);
 
-      var hemiLight = new THREE.HemisphereLight(0xffffff, 0xffffff, 5);
-      hemiLight.color.setHSL(0.6, .8, 1);
-      hemiLight.groundColor.setHSL(0.6, .3, 0.3);
+      var hemiLight = new THREE.HemisphereLight(0xffffff, 0xffffff, 8);
+      hemiLight.color.setHSL(1, .8, 3);
+      hemiLight.groundColor.setHSL(0, 0, 0);
       hemiLight.position.set(0, 50, 0);
       scene.add(hemiLight);
 
@@ -1127,14 +1107,14 @@
         //无触发的，子系统的
         //添加第一个
         cubea1 = new THREE.Mesh(geometry, material);
-      cubea1.position.set(0, 0, 0);
+      cubea1.position.set(3.3, 0.3, -1);
       cubea1.name = 'xqa1';
       targetArray.push({ name: cubea1.name, position: cubea1.position });
       scene.add(cubea1);
 
       //添加第二个
       cubea2 = new THREE.Mesh(geometry, material);
-      cubea2.position.set(0, 0, 0);
+      cubea2.position.set(0, 4, 0);
       cubea2.name = 'xqa2';
       targetArray.push({ name: cubea2.name, position: cubea2.position });
       scene.add(cubea2);
@@ -1198,34 +1178,109 @@
 
 
 	  <!-- 重复贴图 -->
-			<!-- var repeatmap= new  THREE.TextureLoader().load('files/downloadaa.jpg'); -->
-			 <!-- repeatmap.wrapS = THREE.RepeatWrapping; -->
-             <!-- repeatmap.wrapT = THREE.RepeatWrapping; -->
-             <!-- repeatmap.repeat.set( 18,18 ); -->
-<!-- var meshMaterial = new THREE.MeshStandardMaterial; -->
+			var repeatmap= new  THREE.TextureLoader().load('files/downloadaa.jpg');
+			 repeatmap.wrapS = THREE.RepeatWrapping;
+             repeatmap.wrapT = THREE.RepeatWrapping;
+             repeatmap.repeat.set( 18,18 );
+var meshMaterial = new THREE.MeshStandardMaterial;
 			
+			
+      var loader = new THREE.GLTFLoader();
+      loader.load('http://qiniucdn.happyppt.com/0522testb/a.gltf',
+        function (gltf) {
+          gltf.scene.scale.set(.5, .5, .5);
+          gltf.scene.position.y -= 1.2;
+          gltf.scene.traverse(function (child) {
+            if (child.isMesh) {
+              child.material.side = THREE.DoubleSide;
+              child.material.envMap = envMap;
+			  child.material.normalMap = repeatmap;
+            }
+          });
+		  var animations = gltf.animations;
 
-      <!-- var loader = new THREE.GLTFLoader(); -->
-      <!-- loader.load('http://qiniucdn.happyppt.com/0522testb/a.gltf', -->
-        <!-- function (gltf) { -->
-          <!-- gltf.scene.scale.set(.5, .5, .5); -->
-          <!-- gltf.scene.position.y -= 1.2; -->
-          <!-- gltf.scene.traverse(function (child) { -->
+                    if (animations && animations.length) {
+                        mixer = new THREE.AnimationMixer(gltf.scene);
+                        for (var i = 0; i < animations.length; i++) {
+                            showanimation.push(animations[i]);
+                        }
+                    }
+          shoeModel = gltf.scene;
+          scene.add(gltf.scene);
+          console.log(gltf.scene);
+        },
+        undefined,
+        function (e) {
+          console.error(e);
+        });
+		
+		
+	<!-- var loadera = new THREE.GLTFLoader(); -->
+      <!-- loadera.load('files/people/qa.gltf', -->
+        <!-- function (gltfa) { -->
+          <!-- gltfa.scene.scale.set(.5, .5, .5); -->
+          <!-- gltfa.scene.position.y -= 1.2; -->
+          <!-- gltfa.scene.traverse(function (child) { -->
             <!-- if (child.isMesh) { -->
               <!-- child.material.side = THREE.DoubleSide; -->
               <!-- child.material.envMap = envMap; -->
 			  <!-- child.material.normalMap = repeatmap; -->
             <!-- } -->
           <!-- }); -->
-          <!-- shoeModel = gltf.scene; -->
-          <!-- scene.add(gltf.scene); -->
-          <!-- console.log(gltf.scene); -->
+          <!-- scene.add(gltfa.scene); -->
+		  <!-- Qa = gltfa.scene; -->
+		  <!-- Qa.visible = false; -->
+        <!-- }, -->
+        <!-- undefined, -->
+        <!-- function (e) { -->
+          <!-- console.error(e); -->
+        <!-- }); -->
+		
+			<!-- var loaderb = new THREE.GLTFLoader(); -->
+      <!-- loaderb.load('files/people/qb.gltf', -->
+        <!-- function (gltfb) { -->
+          <!-- gltfb.scene.scale.set(.5, .5, .5); -->
+          <!-- gltfb.scene.position.y -= 1.2; -->
+          <!-- gltfb.scene.traverse(function (child) { -->
+            <!-- if (child.isMesh) { -->
+              <!-- child.material.side = THREE.DoubleSide; -->
+              <!-- child.material.envMap = envMap; -->
+			  <!-- child.material.normalMap = repeatmap; -->
+            <!-- } -->
+          <!-- }); -->
+          <!-- scene.add(gltfb.scene); -->
+		  <!-- Qb = gltfb.scene; -->
+		  <!-- Qb.visible = false; -->
+        <!-- }, -->
+        <!-- undefined, -->
+        <!-- function (e) { -->
+          <!-- console.error(e); -->
+        <!-- }); -->
+		
+		
+					<!-- var loaderc = new THREE.GLTFLoader(); -->
+      <!-- loaderc.load('files/people/qb.gltf', -->
+        <!-- function (gltfc) { -->
+          <!-- gltfc.scene.scale.set(.5, .5, .5); -->
+          <!-- gltfc.scene.position.y -= 1.2; -->
+          <!-- gltfc.scene.traverse(function (child) { -->
+            <!-- if (child.isMesh) { -->
+              <!-- child.material.side = THREE.DoubleSide; -->
+              <!-- child.material.envMap = envMap; -->
+			  <!-- child.material.normalMap = repeatmap; -->
+            <!-- } -->
+          <!-- }); -->
+          <!-- scene.add(gltfc.scene); -->
+		  <!-- Qc = gltfc.scene; -->
+		  <!-- Qc.visible = false; -->
         <!-- }, -->
         <!-- undefined, -->
         <!-- function (e) { -->
           <!-- console.error(e); -->
         <!-- }); -->
 
+		
+		
 
         renderer = new THREE.WebGLRenderer({
           antialias: true, alpha: true
@@ -1245,13 +1300,15 @@
       controls.dampingFactor = 0.1;
       controls.enableZoom = true;
       controls.target.set(-0.00001, 0, 0);
-      controls.minPolarAngle = Math.PI / 2 - 1.2;
-      controls.maxPolarAngle = Math.PI / 2 + 1;       // 控制酒瓶的旋转角度
       controls.autoRotateSpeed = -0.036;             //自动旋转速度
-
       controls.autoRotate = false;                //控制是否自动旋转
 
-      controls.minDistance = 2;
+	  
+	 controls.minPolarAngle = Math.PI / 2;       // 垂直最下角度限制
+      controls.maxPolarAngle = Math.PI / 2;       // 垂直最下角度限制
+	  controls.maxAzimuthAngle = 2.5;		//水平角度最右限制
+	  controls.minAzimuthAngle = 0.5 ;       //水平角度最左限制
+      controls.minDistance = 25;
       controls.maxDistance = 25;
 
       window.addEventListener('resize', onWindowResize, false);
