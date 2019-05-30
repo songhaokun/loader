@@ -9,6 +9,7 @@
   <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
   <link rel="stylesheet" type="text/css" href="css/camtoh5ds.css" />
   <link rel="stylesheet" href="css/css.css" />
+  <link rel="stylesheet" href="css/loading.css" />
   <script src="js/vue.js"></script>
   <script src="js/libs/Tween.min.js"></script>
     <script src="build/three.js"></script>
@@ -20,6 +21,16 @@
   <script src="js/dat.gui.min.js"></script>
   <script src="js/Detector.js"></script>
   <script src="js/inflate.min.js"></script>
+   <script>
+       $(function() {
+         $('#loading .loading-end').animate({
+          height: "630px",
+           top: 0
+        },3000,function () {
+           $('#loading').hide();
+         })
+       })
+   </script>
 </head>
 <style>
   * {
@@ -89,6 +100,13 @@
 </style>
 
 <body>
+<div id="loading">
+    <div class="box">
+        <div class="loading-start"></div>
+        <div class="loading-end"></div>
+    </div>
+
+</div>
 <div class="first">
         <div class="wer a1" style="display: none; background-image: none">
             <div class="tp1 tp1-0">
@@ -264,7 +282,7 @@
 
     <!-- 底部轮播按钮的触发 -->
   </div>
-  <div class="image_top"></div>
+  <div class="image_top" id="image_top"></div>
   <div class="xan" :style="'background-image:url(files/bg'+selectindex+'.png)'" id="app">
   </div>
     <!-- <div v-if="selectindex==1" class="active"> -->
@@ -1532,10 +1550,33 @@ stats.update();
 					
         }
     $(function () {
+      function image_top_change(type) {
+        var idx = $('.tips.active').index() - 1;
+        var len = $('.tips').length;
+        var image_top_url = ["","","./files/bg6.png","",""];
+        console.log(idx)
+        if(type === 'shang') {
+          if(idx === 0) {
+            idx = len - 1;
+          }else {
+            idx--;
+          }
+        }else {
+          if(idx === len - 1) {
+            idx = 0;
+          }else {
+            idx++;
+          }
+        }
+        $('#image_top').css({
+          "background-image": `url(${image_top_url[idx]})`
+        })
+      }
       $('.shang').on('click', function () {
         var dqindex = vm.selectindex;
         //上翻页
         cameraMoveBackState();
+        image_top_change('shang');
         if ($('.tips.active').index() - 1 == 0) {
           $('.tips').removeClass('active');
           $($('.tips')[$('.tips').length - 1])
@@ -1554,6 +1595,7 @@ stats.update();
       $('.xia').on('click', function () {
 
         cameraMoveState();
+        image_top_change('xia');
         var dqindex = vm.selectindex;
         //下翻页
         if ($('.tips.active').index() == $('.tips').length) {
