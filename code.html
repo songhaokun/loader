@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="./css/css.css">
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        html {
+            width: 100%;
+            height: 100%;
+        }
+        body {
+            width: 100%;
+            height: 100%;
+            background: url("./img/background.png") no-repeat center;
+            background-size: cover;
+            overflow: auto;
+        }
+        .content {
+            margin: auto;
+            max-width: 1024px;
+            position: relative;
+            height: 40%;
+            -webkit-transform: translateY(-50%);
+            transform: translateY(-50%);
+            top: 30%;
+        }
+        .logo-wrap {
+            width: 50%;
+            margin: auto;
+            position: absolute;
+            left: 0;
+            right: 0;
+        }
+        .logo-wrap img {
+            width: 100%;
+        }
+        .qr-wrap {
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            width: 90%;
+            margin: auto;
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 31%;
+        }
+        .qr-left {
+            -webkit-box-flex: 1;
+            -ms-flex: 1;
+            flex: 1;
+            padding: 2.5%;
+        }
+        .qr-left img {
+            width: 100%;
+        }
+
+        /*.image_bottom {*/
+        /*    width: 100%;*/
+        /*    position: absolute;*/
+        /*    z-index: 1;*/
+        /*    left: 50%;*/
+        /*    bottom: 20px;*/
+        /*    transform: translateX(-50%);*/
+        /*}*/
+        /*.pages span {*/
+        /*    width: 10px;*/
+        /*    height: 10px;*/
+        /*    display: inline-block;*/
+        /*    vertical-align: middle;*/
+        /*    !* margin-top:-16vw; *!*/
+        /*    background: url(./img/diana.png) no-repeat center top;*/
+        /*    background-size: 100%;*/
+        /*}*/
+
+        /*.pages span.active {*/
+        /*    !* margin-top:-16vw; *!*/
+        /*    background: url(./img/dian.png) no-repeat center top;*/
+        /*    background-size: 100%;*/
+        /*}*/
+
+        /*.shang{*/
+        /*    !* margin-top:-16vw; *!*/
+        /*    width: 50px;*/
+        /*    height: 50px;*/
+        /*    background: url(./img/zuoa.png) no-repeat center top;*/
+        /*    background-size: 100%;*/
+        /*    position: absolute;*/
+        /*    left: 0;*/
+        /*}*/
+
+        /*.xia {*/
+        /*    !* margin-top:-16vw; *!*/
+        /*    width: 50px;*/
+        /*    height: 50px;*/
+        /*    background: url(./img/youa.png) no-repeat center top;*/
+        /*    background-size: 100%;*/
+        /*    position: absolute;*/
+        /*    right: 0;*/
+        /*    bottom: 0;*/
+        /*}*/
+    </style>
+</head>
+<body>
+    <div class="content">
+        <div class="logo-wrap">
+            <img src="http://pccdn.weshape3d.com/asca/qrcode/ascalogo.png">
+        </div>
+        <div class="qr-wrap">
+            <div class="qr-left">
+                <img src="http://pccdn.weshape3d.com/asca/qrcode/qqwechatCN.png">
+            </div>
+            <div class="qr-left">
+                <img src="http://pccdn.weshape3d.com/asca/qrcode/qqwesiteCN.png">
+            </div>
+        </div>
+    </div>
+
+    <div class="image_bottom">
+        <div class="btn_box pages">
+            <div class="shang"></div>
+            <span class="active  tips"></span>
+            <span class="tips" onclick="Show_Hidden(xq2);donghua2();vm.selectindex=2;"></span>
+            <span class="tips" onclick="Show_Hidden(xq3);donghua3();vm.selectindex=3;"></span>
+            <span class="tips" onclick="Show_Hidden(xq4);donghua4();vm.selectindex=4;"></span>
+            <span class="tips" onclick="Show_Hidden(xq5);donghua5();vm.selectindex=5;"></span>
+            <div class="xia"></div>
+        </div>
+    </div>
+</body>
+</html>

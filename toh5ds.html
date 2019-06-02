@@ -434,7 +434,7 @@
             layer_button.removeClass('layer-button-active');
             $(this).addClass('layer-button-active');
         })
-  
+  var isdonghua9 = false;
   
   
     var vm = new Vue({//子系统按钮
@@ -566,6 +566,7 @@
         return;
       }
       console.log(trid.id);
+
       switch (trid.id) {
         case ('xq1'):
           // 相机开始移动到对应的位置；
@@ -880,9 +881,11 @@
       cube.visible = false;
       cube2.visible = false;
       cube3.visible = true;
-      document.getElementsByClassName('a4')[0].style.display = 'block';
-      document.getElementsByClassName('a5')[0].style.display = 'block';
-      document.getElementsByClassName('a6')[0].style.display = 'block';
+      setTimeout(function() {document.getElementsByClassName('a4')[0].style.display = 'block';},2000)
+    setTimeout(function() {document.getElementsByClassName('a5')[0].style.display = 'block';},2000)
+        setTimeout(function() {document.getElementsByClassName('a6')[0].style.display = 'block';},2000)
+
+
       document.getElementsByClassName('a1')[0].style.display = 'none';
       document.getElementsByClassName('a2')[0].style.display = 'none';
       document.getElementsByClassName('a3')[0].style.display = 'block';
@@ -903,6 +906,10 @@
 
 
     function donghua3() {
+	      if(isdonghua9) {
+	          donghua9();
+	          return;
+          }
       //动画3
       if (currentAction) {
         mixer.stopAllAction();
@@ -932,12 +939,15 @@
       cubea1.visible = true;
       cubea2.visible = true;
       cubea3.visible = true;
-      document.getElementsByClassName('a1')[0].style.display = 'block';
-      document.getElementsByClassName('a2')[0].style.display = 'block';
-      document.getElementsByClassName('a3')[0].style.display = 'block';
+
+        setTimeout(function() {document.getElementsByClassName('a1')[0].style.display = 'block';},2000)
+        setTimeout(function() {document.getElementsByClassName('a2')[0].style.display = 'block';},2000)
+        setTimeout(function() {document.getElementsByClassName('a3')[0].style.display = 'block';},2000)
     }
 
-
+    function donghua9() {
+        alert(9)
+    }
 
     function donghua4() {
       //动画4
@@ -1578,6 +1588,7 @@ stats.update();
         //上翻页
         cameraMoveBackState();
         image_top_change('shang');
+          isdonghua9 = $('.tips.active').index() === 4;
         if ($('.tips.active').index() - 1 == 0) {
           $('.tips').removeClass('active');
           $($('.tips')[$('.tips').length - 1])
