@@ -97,6 +97,61 @@
 
 #tp3{ position: absolute; width: 400px; height: 213px; overflow: hidden; left:0;transition: all 0.8s;  text-indent: 0;  transform: translate(-100%,-47%);z-index: 999999;}
 #tp4{ transition: all 0.5s ease-out; margin-left: 100%;}
+
+/*body {*/
+/*    width: 100%;*/
+/*    height: 100%;*/
+/*    background: url("./img/background.png") no-repeat center;*/
+/*    background-size: cover;*/
+/*    overflow: auto;*/
+/*}*/
+.self-a7 {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    z-index: 99999999999999;
+    background: url("./img/background.png") no-repeat center;
+    background-size: cover;
+}
+.code-content {
+    margin: auto;
+    max-width: 1024px;
+    position: relative;
+    height: 40%;
+    -webkit-transform: translateY(-50%);
+    transform: translateY(-50%);
+    top: 30%;
+}
+.code-content .logo-wrap {
+    width: 50%;
+    margin: auto;
+    position: absolute;
+    left: 0;
+    right: 0;
+}
+.code-content .logo-wrap img {
+    width: 100%;
+}
+.code-content .qr-wrap {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    width: 90%;
+    margin: auto;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 31%;
+}
+.code-content .qr-left {
+    -webkit-box-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
+    padding: 2.5%;
+}
+.code-content .qr-left img {
+    width: 100%;
+}
 </style>
 
 <body>
@@ -106,7 +161,21 @@
         <div class="loading-start"></div>
         <div class="loading-end"></div>
     </div>
-
+</div>
+<div class="self-a7 a7" style="display: none;">
+    <div class="code-content">
+        <div class="logo-wrap">
+            <img src="http://pccdn.weshape3d.com/asca/qrcode/ascalogo.png">
+        </div>
+        <div class="qr-wrap">
+            <div class="qr-left">
+                <img src="http://pccdn.weshape3d.com/asca/qrcode/qqwechatCN.png">
+            </div>
+            <div class="qr-left">
+                <img src="http://pccdn.weshape3d.com/asca/qrcode/qqwesiteCN.png">
+            </div>
+        </div>
+    </div>
 </div>
 <div class="first">
         <div class="wer a1" style="display: none; background-image: none">
@@ -836,7 +905,7 @@
       document.getElementsByClassName('a1')[0].style.display = 'none';
       document.getElementsByClassName('a2')[0].style.display = 'none';
       document.getElementsByClassName('a3')[0].style.display = 'none';
-	  
+        document.getElementsByClassName('a7')[0].style.display = 'none';
 	  
 	  
 	  document.getElementsByClassName('layer-right')[0].style.display = 'block';
@@ -896,8 +965,9 @@
       document.getElementsByClassName('a1')[0].style.display = 'none';
       document.getElementsByClassName('a2')[0].style.display = 'none';
       document.getElementsByClassName('a3')[0].style.display = 'none';
-	  
-	  document.getElementsByClassName('layer-right')[0].style.display = 'none';
+        document.getElementsByClassName('a7')[0].style.display = 'none';
+
+        document.getElementsByClassName('layer-right')[0].style.display = 'none';
 	  document.getElementsByClassName('layer-righta')[0].style.display = 'none';
       document.getElementsByClassName('layer-rightb')[0].style.display = 'none';
       document.getElementsByClassName('layer-rightc')[0].style.display = 'none';
@@ -935,8 +1005,9 @@
       document.getElementsByClassName('a1')[0].style.display = 'none';
       document.getElementsByClassName('a2')[0].style.display = 'none';
       document.getElementsByClassName('a3')[0].style.display = 'none';
+        document.getElementsByClassName('a7')[0].style.display = 'none';
 
-      cubea1.visible = true;
+        cubea1.visible = true;
       cubea2.visible = true;
       cubea3.visible = true;
 
@@ -969,26 +1040,19 @@
       document.getElementsByClassName('a1')[0].style.display = 'none';
       document.getElementsByClassName('a2')[0].style.display = 'none';
       document.getElementsByClassName('a3')[0].style.display = 'none';
+        document.getElementsByClassName('a7')[0].style.display = 'none';
+
     }
 
 
     function donghua5() {
-      //动画5
-      <!-- if (currentAction) { -->
-        <!-- mixer.stopAllAction(); -->
-
-
-      <!-- } -->
-      <!-- if (showanimation[1]) { -->
-        <!-- currentAction = mixer.clipAction(showanimation[1]); -->
-        <!-- currentAction.loop = THREE.LoopOnce; -->
-
-        <!-- currentAction.clampWhenFinished = true; -->
-
-        <!-- currentAction.play(); //合体 -->
-      <!-- } -->
-
-
+        document.getElementsByClassName('a1')[0].style.display = 'none';
+        document.getElementsByClassName('a2')[0].style.display = 'none';
+        document.getElementsByClassName('a3')[0].style.display = 'none';
+        document.getElementsByClassName('a4')[0].style.display = 'none';
+        document.getElementsByClassName('a5')[0].style.display = 'none';
+        document.getElementsByClassName('a6')[0].style.display = 'none';
+        document.getElementsByClassName('a7')[0].style.display = 'block';
     }
 
 
